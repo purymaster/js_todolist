@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JavaScript TodoList</title>
+	<style>
+		* {line-height:1.5em; margin:0; padding:0; box-sizing:border-box; font-family:'Helvetica Neue', 'Apple SD Gothic Neo', 'Droid Sans', 'Malgun Gothic', '맑은 고딕', Dotum, 돋움, sans-serif; font-size:100%; color:#333; list-style:none; word-break:keep-all;}
+		body {padding:15px;}
+		input[type='text'] {height:30px; line-height:30px; padding:0 10px; border:1px solid #999; font-size:14px;}
+		button {width:100px; line-height:28px; padding:0 10px; border:1px solid #999; border-radius:0; background:none; font-size:14px; cursor:pointer;}
+		.wrap {max-width:500px; margin:0 auto; text-align:center;}
+		h1 {margin-bottom:15px; font-size:24px; text-align:center;}
+		.input_wrap {margin:50px auto 30px; font-size:0;}
+		.input_wrap input[type='text'] {width:calc(100% - 100px); height:40px; line-height:40px; border-right:0; font-size:16px;}
+		.input_wrap .btn_wrap {display:inline-block;}
+		.input_wrap .mod {display:none;}
+		.input_wrap button {line-height:38px; border-right:0; background:#efefef; font-size:16px;}
+		.input_wrap button:last-child {border-right:1px solid #999;}
+		.input_wrap button:not(.submit) {width:50px;}
+		h2 {margin:15px 0; font-size:18px; text-align:center;}
+		.list li {position:relative; z-index:0; margin:15px 0; padding:15px; background:#efefef; text-align:right;}
+		.list li.blank {text-align:center;}
+		.list li p {margin-bottom:15px; text-align:left;}
+		.list#complete li p {margin:0; color:#999; text-decoration:line-through;}
+		.list li button {width:auto; background:#fff;}
+		.mod_ctr .input_wrap .sub {display:none;}
+		.mod_ctr .input_wrap .mod {display:inline-block;}
+		.mod_ctr .list li:after {content:''; position:absolute; top:0; left:0; z-index:1; width:100%; height:100%; background:rgba(255,255,255,.75); cursor:not-allowed;}
+		.mod_ctr .list li.on:after {background:none;}
+	</style>
+	<script defer src="function.js"></script>
+</head>
+
+<body>
+	<div class="wrap">
+		<h1>Todo List</h1>
+		<button type="button" class="clear">초기화</button>
+		<form action="#">
+			<div class="input_wrap">
+				<input type="text" id="title">
+				<div class="btn_wrap sub">
+					<button type="submit" class="submit">등록</button>
+				</div>
+				<div class="btn_wrap mod">
+					<button type="button" class="modify">수정</button>
+					<button type="button" class="cancel">취소</button>
+				</div>
+			</div>
+		</form>
+		<section>
+			<h2>오늘 해야할 일</h2>
+			<ul class="list" id="plan"></ul>
+		</section>
+		<section>
+			<h2>오늘 완료한 일</h2>
+			<ul class="list" id="complete"></ul>
+		</section>
+	</div>
+</body>
+
+</html>
