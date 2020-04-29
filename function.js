@@ -54,9 +54,9 @@ function clearCache() {
 	location.reload();
 };
 
-function formInit() {
+function formInit(val) {
+	if (val) document.querySelector('#title').focus();
 	document.querySelector('#title').value = "";
-	document.querySelector('#title').focus();
 };
 
 function setTodoList(arr) {
@@ -102,7 +102,7 @@ function addTodoList() {
 	todoListData.push(listTitle);
 	todoList.innerHTML = setTodoList(todoListData);
 	setCache(todoListData, completeListData);
-	formInit();
+	formInit('focus');
 };
 
 function getControlTarget(obj) {
@@ -127,7 +127,9 @@ function setModifyList() {
 	formInit();
 	modifyMode = false;
 	document.querySelector('body').classList.remove('mod_ctr');
-	for (let item of document.querySelectorAll('.list li')) { item.classList.remove('on'); };
+	for (let item of document.querySelectorAll('.list li')) {
+		item.classList.remove('on');
+	};
 };
 
 function modifyCancel() {
@@ -135,7 +137,9 @@ function modifyCancel() {
 	formInit();
 	modifyMode = false;
 	document.querySelector('body').classList.remove('mod_ctr');
-	for (let item of document.querySelectorAll('.list li')) { item.classList.remove('on'); };
+	for (let item of document.querySelectorAll('.list li')) {
+		item.classList.remove('on');
+	};
 };
 
 function removeList(obj) {
@@ -181,5 +185,5 @@ function drawList() {
 
 (function () {
 	getCache();
-	formInit();
+	formInit('focus');
 })();
