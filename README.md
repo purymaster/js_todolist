@@ -4,7 +4,7 @@
 
 - 기본 TodoList 관리 기능(등록, 수정, 삭제, 완료)
 - localStorage 저장
-- 날짜 변경 시, TodoList 초기화
+- 날짜 변경 시, TodoList 초기화 및 미완료 TodoList 경고
 
 ## 페이지
 

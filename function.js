@@ -43,7 +43,12 @@ function setCache(todoArr = [], completeArr = []) {
 };
 
 function getCache() {
-	if (getTodayDate() !== localStorage['todoDate']) clearCache();
+	if (getTodayDate() !== localStorage['todoDate']) {
+		if (localStorage['todoList'] !== "" || localStorage['todoList'] !== "[]") {
+			alert("완료하지 않은 일 : \n\n" + JSON.parse(localStorage['todoList']).join('\n'));
+		};
+		clearCache();
+	};
 	drawList();
 };
 
