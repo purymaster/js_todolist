@@ -43,7 +43,7 @@ function setCache(todoArr = [], completeArr = []) {
 };
 
 function getCache() {
-	if (getTodayDate() !== localStorage['todoDate']) {
+	if (localStorage['todoDate'] && getTodayDate() !== localStorage['todoDate']) {
 		if (localStorage['todoList'] !== "" || localStorage['todoList'] !== "[]") {
 			alert("완료하지 않은 일 : \n\n" + JSON.parse(localStorage['todoList']).join('\n'));
 		};
@@ -172,14 +172,14 @@ function moveCompleteList(obj) {
 };
 
 function drawList() {
-	if (localStorage['todoList'] === "" || localStorage['todoList'] === "[]") {
+	if (!localStorage['todoList']) {
 		todoListData = [];
 		todoList.innerHTML = `<li class="blank">오늘 해야할 일이 없습니다.</li>`;
 	} else {
 		todoListData = JSON.parse(localStorage['todoList']);
 		todoList.innerHTML = setTodoList(todoListData);
 	};
-	if (localStorage['completeList'] === "" || localStorage['completeList'] === "[]") {
+	if (!localStorage['completeList']) {
 		completeListData = [];
 		completeList.innerHTML = `<li class="blank">오늘 완료한 일이 없습니다.</li>`;
 	} else {
