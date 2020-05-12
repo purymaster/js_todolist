@@ -10,6 +10,7 @@ let todoList = document.querySelector('#plan'),
 document.querySelector('form').addEventListener('submit', function (e) {
 	e.preventDefault();
 	modifyMode ? setModifyList() : addTodoList();
+	formInit('focus');
 });
 
 document.addEventListener('click', function (e) {
@@ -101,7 +102,7 @@ function addTodoList() {
 	let listTitle = document.querySelector('#title').value;
 	if (listTitle.trim() === "") {
 		alert('내용을 입력해주시길 바랍니다.');
-		formInit();
+		formInit('focus');
 		return false;
 	};
 	todoListData.push(listTitle);
@@ -172,14 +173,14 @@ function moveCompleteList(obj) {
 };
 
 function drawList() {
-	if (!localStorage['todoList']) {
+	if (!localStorage['todoList'] || localStorage['todoList'] === "[]") {
 		todoListData = [];
 		todoList.innerHTML = `<li class="blank">오늘 해야할 일이 없습니다.</li>`;
 	} else {
 		todoListData = JSON.parse(localStorage['todoList']);
 		todoList.innerHTML = setTodoList(todoListData);
 	};
-	if (!localStorage['completeList']) {
+	if (!localStorage['completeList'] || localStorage['completeList'] === "[]") {
 		completeListData = [];
 		completeList.innerHTML = `<li class="blank">오늘 완료한 일이 없습니다.</li>`;
 	} else {
